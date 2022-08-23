@@ -1,0 +1,67 @@
+# IRAF installation on ubuntu
+$ sudo apt-get install tcsh
+# install IRAF 32-bit dependencies on 64-bit architechture
+$ sudo apt-get install libc6:i386 libz1:i386 libncurses5:i386 libbz2-1.0:i386 libuuid1:i386 libxcb1:i386 libxmu6:i386
+$ sudo mkdir /iraf
+$ sudo mkdir /iraf/iraf
+$ sudo cp iraf.lnux.x86_64.tar.gz /iraf/iraf/
+$ cd /iraf/iraf/
+$ sudo tar -zxf iraf.lnux.x86_64.tar.gz
+$ sudo ./install
+$ mkdir /iraf/x11iraf
+$ sudo cp x11iraf-v2.0BETA-bin.linux.tar.gz /iraf/x11iraf
+$ sudo tar -zxf x11iraf-v2.0BETA-bin.linux.tar.gz
+$ sudo ./install (make sure tcsh is installed)
+$ sudo tar -zxf ds9.ubuntu18.8.1.tar.gz
+$ sudo mv ds9 /usr/local/bin
+# Create a global IRAF
+$ mkdir .iraf
+$ cd ~/.iraf/
+$ ls
+$ mkiraf
+#----------------------------------------------------------------------------------------#
+-- creating a new uparm directory
+Terminal types: xgterm,xtermjh,xterm,etc.
+Enter terminal type (xgterm): xgterm
+A new LOGIN.CL file has been created in the current directory.
+You may wish to review and edit this file to change the defaults.
+#----------------------------------------------------------------------------------------#
+$ xgterm
+$ cl
+$ !ds9 &
+#----------------------------------------------------------------------------------------#
+Everything should be checked if they are working
+#----------------------------------------------------------------------------------------#
+## Install Miniconda
+
+$ cd Downloads
+$ bash Miniconda3-latest-Linux-x86_64.sh
+
+#----------------------------------------------------------------------------------------#
+
+==> For changes to take effect, close and re-open your current shell. <==
+
+If you'd prefer that conda's base environment not be activated on startup, 
+   set the auto_activate_base parameter to false: 
+
+conda config --set auto_activate_base false (optional)
+
+Thank you for installing Miniconda2!
+
+#----------------------------------------------------------------------------------------#
+
+$ conda init
+$ conda list
+$ conda update conda
+$ conda info
+$ conda config --add channels http://ssb.stsci.edu/astroconda
+$ conda install pyraf  (if you want to script IRAF)
+$ pyraf ( to check pyraf installation)
+
+#----------------------------------------------------------------------------------------#
+# To customize the xgterm
+1. open .bashrc file
+2. alias xgterm='ds9 & xgterm -font -*-fixed-bold-r-*-*-18-*-*-*-*-*-iso8859-* -title IRAF -sb -fg "black" -bg "white" -e cl &'
+
+#----------------------------------------------------------------------------------------#
+
